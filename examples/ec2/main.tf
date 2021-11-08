@@ -5,13 +5,13 @@ resource "aws_instance" "sample" {
   vpc_security_group_ids = [var.SGID]
 
   tags = {
-    Name = element(var.name, count.index)
+    Name = local.NAME
   }
 }
 
 resource "null_resource" "sample" {
   triggers = {
-    abc = timestamp()
+    abc = aws_instance.sample.*.private_ip
   }
   provisioner "remote-exec" {
     connection {
@@ -36,4 +36,8 @@ data "aws_ami" "example" {
   most_recent = true
   name_regex  = "^Ubuntu*"
   owners      = ["973714476881"]
+}
+
+locals {
+  NAME = "${var.env}-instance"
 }
