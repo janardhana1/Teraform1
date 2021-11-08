@@ -11,7 +11,7 @@ resource "aws_instance" "sample" {
   provisioner "remote-exec" {
     connection {
       host     = self.public_ip
-      user     = "centos"
+      user     = "ubuntu"
       password = "DevOps321"
     }
 
