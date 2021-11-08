@@ -22,3 +22,4 @@ module "sg" {
 }
 
 variable "instance_type" {}
+variable "env" {}
