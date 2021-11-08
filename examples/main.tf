@@ -19,3 +19,5 @@ module "ec2" {
 module "sg" {
   source = "./sg"
 }
+
+variable "instance_type" {}
